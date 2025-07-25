@@ -3,29 +3,84 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>To-Do List App</title>
+    <title>Responsive To-Do List</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
     <div class="container">
-        <h1>My To-Do List</h1>
-        
-        <div class="input-section">
-            <input type="text" id="todo-input" placeholder="Add a new task...">
-            <input type="date" id="date-input">
-            <button id="add-btn">Add Task</button>
+        <header>
+            <h1>To-Do List</h1>
+            <div class="stats">
+                <div class="stat-item">
+                    <span class="stat-label">Total</span>
+                    <span class="stat-value" id="total-tasks">0</span>
+                </div>
+                <div class="stat-item">
+                    <span class="stat-label">Done</span>
+                    <span class="stat-value" id="completed-tasks">0</span>
+                </div>
+                <div class="stat-item">
+                    <span class="stat-label">Pending</span>
+                    <span class="stat-value" id="pending-tasks">0</span>
+                </div>
+            </div>
+        </header>
+
+        <div class="add-todo-section">
+            <div class="add-todo">
+                <input type="text" id="todo-input" placeholder="Add new task...">
+                <input type="text" id="date-input" placeholder="Due date" onfocus="(this.type='date')">
+                <button id="add-btn"><i class="fas fa-plus"></i> Add</button>
+            </div>
         </div>
-        
-        <div class="filter-section">
-            <select id="filter-select">
-                <option value="all">All Tasks</option>
-                <option value="today">Today</option>
-                <option value="upcoming">Upcoming</option>
-                <option value="past">Past Due</option>
-            </select>
+
+        <div class="controls">
+            <div class="search-box">
+                <i class="fas fa-search"></i>
+                <input type="text" id="search-input" placeholder="Search tasks...">
+            </div>
+            <div class="filter-sort">
+                <select id="filter-select">
+                    <option value="all">All Tasks</option>
+                    <option value="completed">Completed</option>
+                    <option value="pending">Pending</option>
+                </select>
+                <select id="sort-select">
+                    <option value="newest">Newest</option>
+                    <option value="oldest">Oldest</option>
+                    <option value="due-date">Due Date</option>
+                </select>
+            </div>
         </div>
-        
-        <ul id="todo-list"></ul>
+
+        <div class="todo-table">
+            <div class="table-header">
+                <div class="header-task">Task</div>
+                <div class="header-date">Due Date</div>
+                <div class="header-status">Status</div>
+                <div class="header-actions">Actions</div>
+            </div>
+            <div class="table-body" id="todo-list"></div>
+        </div>
+
+        <div class="actions">
+            <button id="delete-all-btn"><i class="fas fa-trash"></i> Clear All</button>
+        </div>
+
+        <footer>
+            <p>Created by Farhan Yazid Musthofa</p>
+        </footer>
+    </div>
+
+    <!-- Validation Popup -->
+    <div id="validation-popup" class="popup">
+        <div class="popup-content">
+            <span class="close-popup">&times;</span>
+            <h3 id="popup-title">Validation</h3>
+            <p id="popup-message">Please check your input</p>
+            <button id="popup-confirm" class="popup-button">OK</button>
+        </div>
     </div>
 
     <script src="js/script.js"></script>
